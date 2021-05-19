@@ -2,6 +2,7 @@ const express = require("express");
 const app = express();
 const cors = require("cors");
 app.use(cors());
+app.use(express.json());
 const port = 5000;
 require("dotenv").config();
 
@@ -26,7 +27,7 @@ client.connect((err) => {
     const events = req.body;
     collection.insertMany(events, (err, result) => {
       console.log(err, result);
-      res.send({ count: result.insertedCount });
+      res.send({ count: result });
     });
   });
   app.get("/", (req, res) => {
