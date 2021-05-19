@@ -10,7 +10,7 @@ app.get('/', (req, res) => {
 })
 console.log(process.env.DB_USER)
 const MongoClient = require('mongodb').MongoClient;
-const uri = "mongodb+srv://<volunteer-user>:<volunteer1234>@cluster0.g4xsc.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
+const uri = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@cluster0.g4xsc.mongodb.net/myFirstDatabase?retryWrites=true&w=majority`
 const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
 client.connect(err => {
   const collection = client.db("test").collection("devices");
