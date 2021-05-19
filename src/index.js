@@ -26,6 +26,7 @@ client.connect((err) => {
     const events = req.body;
     collection.insertMany(events, (err, result) => {
       console.log(err, result);
+      res.send({ count: result.insertedCount });
     });
   });
   app.get("/", (req, res) => {
